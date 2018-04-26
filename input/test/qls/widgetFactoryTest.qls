@@ -1,0 +1,21 @@
+stylesheet taxOfficeExample
+{
+  page Questions
+  {
+    question hasBoughtHouse
+        widget checkbox
+
+    question hasMainLoan
+        widget dropdown("I think so", "I don't know")
+
+    question hasSoldHouse
+        widget radio("Yes", "No")
+
+    question sellingPrice
+        widget spinbox
+
+    question privateDebt
+        widget slider(50000, 500000, 1000)
+
+  }
+}

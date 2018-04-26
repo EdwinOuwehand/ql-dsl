@@ -1,0 +1,43 @@
+group 'ouweh-vdwerf'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+apply plugin: 'antlr'
+
+sourceCompatibility = 1.8
+
+sourceSets {
+    main {
+        java {
+            srcDir 'src/main'
+        }
+    }
+    test {
+        java {
+            srcDir 'src/test'
+        }
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+    antlr "org.antlr:antlr4:4.7.1"
+    compile group: 'org.json', name: 'json', version: '20180130'
+}
+
+generateGrammarSource {
+    arguments += ["-visitor"]
+}
+
+generateGrammarSource.doLast {
+    println "Copying generated grammar lexer/parser files to main directory."
+    copy {
+        from "${buildDir}/generated-src/antlr/main"
+        into "src/main/antlr/generated"
+    }
+    clean.execute()
+}

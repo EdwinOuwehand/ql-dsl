@@ -1,0 +1,45 @@
+stylesheet taxOfficeExample
+{
+  page Housing
+  {
+    section "Buying"
+    {
+      question hasBoughtHouse
+        widget checkbox
+    }
+    section "Loaning"
+      question hasMainLoan
+        widget dropdown("I think so", "I don't know")
+  }
+
+  page Selling
+  {
+    section "Selling"
+    {
+      question houseIsForSell
+
+      question hasSoldHouse
+        widget radio("Yes", "No")
+      section "You sold a house"
+      {
+        question sellingPrice
+          widget spinbox
+
+        question privateDebt
+          widget radio("Yes", "No")
+
+        question sellingPrice
+
+        default money
+        {
+          width: 400
+          font: "Arial"
+          fontsize: 14
+          color: #999999
+          widget radio("Yes", "No")
+        }
+      }
+    }
+    default money widget radio("Yes", "No")
+  }
+}
